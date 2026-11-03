@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý điểm sinh viên</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+    <header class="page-header">
+        <div>
+            <h1>Quản lý điểm sinh viên</h1>
+            <p>Lớp CNTT1-K18 · Học kỳ 1</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="summary">
+            <div class="summary-card">
+                <span>Tổng sinh viên</span>
+                <strong id="totalStudents">0</strong>
+            </div>
+            <div class="summary-card">
+                <span>Điểm trung bình lớp</span>
+                <strong id="classAverage">0.00</strong>
+            </div>
+            <div class="summary-card">
+                <span>Sinh viên đạt học bổng</span>
+                <strong id="scholarshipCount">0</strong>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Bảng điểm của lớp</h2>
+                    <p>Chọn một sinh viên để xem điểm chi tiết.</p>
+                </div>
+
+                <input type="search" id="searchInput" placeholder="Tìm theo mã hoặc tên sinh viên..."
+                    aria-label="Tìm sinh viên">
+            </div>
+
+            <div id="loadingMessage" class="message">Đang tải dữ liệu...</div>
+            <div id="errorMessage" class="message error" hidden></div>
+
+            <div class="table-wrapper">
+                <table id="studentTable">
+                    <thead id="tableHead"></thead>
+                    <tbody id="studentTableBody"></tbody>
+                </table>
+            </div>
+
+            <p id="resultCount" class="result-count"></p>
+        </section>
+    </main>
+
+    <div id="studentModal" class="modal" hidden>
+        <div class="modal-backdrop" data-close-modal></div>
+
+        <section class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h2 id="modalTitle">Chi tiết sinh viên</h2>
+                <button id="closeModal" class="close-button" aria-label="Đóng">
+                    &times;
+                </button>
+            </div>
+
+            <div id="studentDetail"></div>
+        </section>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
