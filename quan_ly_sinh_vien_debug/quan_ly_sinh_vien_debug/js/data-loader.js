@@ -1,23 +1,18 @@
 export async function loadData() {
-    const [studentsResponse, subjectsResponse, gradesResponse] =
-        await Promise.all([
-            fetch("./data/students.json"),
-            fetch("./data/subjects.json"),
-            fetch("./data/grades.json")
-        ]);
+    const [studentsRes, subjectsRes, gradesRes] = await Promise.all([
+        fetch("./data/students.json"),
+        fetch("./data/subjects.json"),
+        fetch("./data/grades.json")
+    ]);
 
-    if (
-        !studentsResponse.ok ||
-        !subjectsResponse.ok ||
-        !gradesResponse.ok
-    ) {
-        throw new Error("Không thể tải dữ liệu JSON.");
+    if (!studentsRes.ok || !subjectsRes.ok || !gradesRes.ok) {
+        throw new Error("Không tải được dữ liệu JSON");
     }
 
     const [students, subjects, grades] = await Promise.all([
-        studentsResponse.json(),
-        subjectsResponse.json(),
-        gradesResponse.json()
+        studentsRes.json(),
+        subjectsRes.json(),
+        gradesRes.json()
     ]);
 
     return { students, subjects, grades };
